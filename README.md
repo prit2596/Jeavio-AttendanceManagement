@@ -1,0 +1,1 @@
+The project is based on generating an IN/OUT report of Employees for company JEAVIO. The project is built on PHP and MySQL.  
