@@ -174,7 +174,7 @@ require_once('format.php');
       <hr>
       <div class="row" style="background-color:#e57373">
         <div class="col s4 push-s2">
-          <h4 class="text-left">Attendance Management</h4>
+          <h4 class="text-left">Attendance Report</h4>
         </div>
       </div>
       <div class="row">
