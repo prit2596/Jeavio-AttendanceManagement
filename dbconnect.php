@@ -3,7 +3,7 @@
   $host="us-cdbr-iron-east-05.cleardb.net";
   $user="be3c88f89b6700";
   $pass="d06bcc09";
-  $db_name="attendance";
+  $db_name="heroku_d8e8081cf4561d5";
 
   $mysqli=new mysqli($host,$user,$pass,$db_name);
 

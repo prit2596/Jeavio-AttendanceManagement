@@ -35,15 +35,15 @@ require_once('format.php');
         fclose($file);
 
         //Drop the existing table as everytime it uses the same table with new content.
-        $drop="DROP TABLE IF EXISTS `attendance`.`Employee_data`";
-        $drop2="DROP TABLE IF EXISTS `attendance`.`attendaance_sheet`";
+        $drop="DROP TABLE IF EXISTS `Employee_data`";
+        $drop2="DROP TABLE IF EXISTS `attendaance_sheet`";
         $mysqli->query($drop);
         $mysqli->query($drop2);
 
         //creating table for data collected from excel file
 
         //creating table of attendance_sheet
-        $attendance_table="CREATE TABLE `attendance`.`attendaance_sheet` ( `Id` INT NOT NULL AUTO_INCREMENT , `Emp_ID` INT NOT NULL , `Emp_Name` VARCHAR(100) NOT NULL , `Date` DATE NOT NULL , `In_Time` TIME NOT NULL , `Out_Time` TIME NOT NULL , `Duration` BIGINT NOT NULL , PRIMARY KEY (`Id`))";
+        $attendance_table="CREATE TABLE `attendaance_sheet` ( `Id` INT NOT NULL AUTO_INCREMENT , `Emp_ID` INT NOT NULL , `Emp_Name` VARCHAR(100) NOT NULL , `Date` DATE NOT NULL , `In_Time` TIME NOT NULL , `Out_Time` TIME NOT NULL , `Duration` BIGINT NOT NULL , PRIMARY KEY (`Id`))";
         $mysqli->query($attendance_table);
         // Regular expression /[0-9][0-9][0-9 ]?[,][A-Z a-z]+/g for matching name
 
@@ -77,7 +77,7 @@ require_once('format.php');
                   $time=timeformat($time);
                   //echo $tm;
 
-                  $attendanceData="Select `In_Time` from `attendance`.`attendaance_sheet` WHERE `Emp_ID`='$id' AND `Date`='$date'";
+                  $attendanceData="Select `In_Time` from `attendaance_sheet` WHERE `Emp_ID`='$id' AND `Date`='$date'";
                   $result2=$mysqli->query($attendanceData);
                   if($result2->num_rows > 0)
                   {
@@ -87,7 +87,7 @@ require_once('format.php');
                       //echo $inTime;
                       $dur=duration($inTime,$time);
 
-                      $updateQuery="UPDATE `attendance`.`attendaance_sheet` SET `Out_Time` = '$time',`Duration`=$dur WHERE `Emp_ID`='$id' AND `Date`='$date'";
+                      $updateQuery="UPDATE `attendaance_sheet` SET `Out_Time` = '$time',`Duration`=$dur WHERE `Emp_ID`='$id' AND `Date`='$date'";
                       $mysqli->query($updateQuery);
 
                   }
@@ -95,7 +95,7 @@ require_once('format.php');
                   {
                     //echo $name.$date."<br/>";
                     $dur=duration($time,'21:00');
-                    $insertQuery="INSERT INTO `attendance`.`attendaance_sheet`(`Id`,`Emp_ID`,`Emp_Name`,`Date`,`In_Time`,`Out_Time`,`Duration`) VALUES (NULL,$id,'$name','$date','$time', '21:00:00',$dur)";
+                    $insertQuery="INSERT INTO `attendaance_sheet`(`Id`,`Emp_ID`,`Emp_Name`,`Date`,`In_Time`,`Out_Time`,`Duration`) VALUES (NULL,$id,'$name','$date','$time', '21:00:00',$dur)";
                     if($mysqli->query($insertQuery)===TRUE)
                     {
                       //echo "inserted <br/>";
@@ -115,7 +115,7 @@ require_once('format.php');
         // fetch the data from Employee_data so that insert  into attendance_sheet
 
         $num = 0;
-        $sql = "SELECT * FROM `attendance`.`attendaance_sheet`";
+        $sql = "SELECT * FROM `attendaance_sheet`";
         if($result = $mysqli->query($sql)) {
              while($p = $result->fetch_array()) {
                  $prod[$num]['Emp_ID']          = $p['Emp_ID'];
