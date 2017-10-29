@@ -102,7 +102,7 @@ require_once('format.php');
                     }
                     else
                     {
-                      echo "failed <br/>";
+                      echo "failed insert <br/>";
                     }
                   }
 
