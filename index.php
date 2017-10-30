@@ -69,15 +69,15 @@ require_once('format.php');
               {
                 if(preg_match("/(0[1-9]|[12][0-9]|3[01])[- \/.](0[1-9]|1[012])[- \/.](19|20)\d\d/",$q[$i]))
                 {
-                  $date=$q[$i];
+                  $dt=$q[$i];
                   $i++;
                   $time=$q[$i];
                   //echo $date.$time."</br>";
-                  $date=dtformat($date);
+                  $dt=dtformat($dt);
                   $time=timeformat($time);
                   //echo $tm;
 
-                  $attendanceData="Select `In_Time` from `attendaance_sheet` WHERE `Emp_ID`='$id' AND `Date`='$date'";
+                  $attendanceData="Select `In_Time` from `attendaance_sheet` WHERE `Emp_ID`='$id' AND `Date`='$dt'";
                   $result2=$mysqli->query($attendanceData);
                   if($result2->num_rows > 0)
                   {
@@ -87,7 +87,7 @@ require_once('format.php');
                       //echo $inTime;
                       $dur=duration($inTime,$time);
 
-                      $updateQuery="UPDATE `attendaance_sheet` SET `Out_Time` = '$time',`Duration`=$dur WHERE `Emp_ID`='$id' AND `Date`='$date'";
+                      $updateQuery="UPDATE `attendaance_sheet` SET `Out_Time` = '$time',`Duration`=$dur WHERE `Emp_ID`='$id' AND `Date`='$dt'";
                       $mysqli->query($updateQuery);
 
                   }
@@ -95,7 +95,7 @@ require_once('format.php');
                   {
                     //echo $name.$date."<br/>";
                     $dur=duration($time,'21:00');
-                    $insertQuery="INSERT INTO `attendaance_sheet`(`Id`,`Emp_ID`,`Emp_Name`,`Date`,`In_Time`,`Out_Time`,`Duration`) VALUES (NULL,$id,'$name','$date','$time', '21:00:00',$dur)";
+                    $insertQuery="INSERT INTO `attendaance_sheet`(`Id`,`Emp_ID`,`Emp_Name`,`Date`,`In_Time`,`Out_Time`,`Duration`) VALUES (NULL,$id,'$name','$dt','$time', '21:00:00',$dur)";
                     if($mysqli->query($insertQuery)===TRUE)
                     {
                       //echo "inserted <br/>";
