@@ -95,7 +95,7 @@ require_once('format.php');
                   {
                     //echo $name.$date."<br/>";
                     $dur=duration($time,'21:00');
-                    $insertQuery="INSERT INTO `attendaance_sheet`(`Id`,`Emp_ID`,`Emp_Name`,`Date`,`In_Time`,`Out_Time`,`Duration`) VALUES (NULL,$id,'$name','$dt','$time', '21:00:00',$dur)";
+                    $insertQuery="INSERT INTO `attendaance_sheet`(`Id`,`Emp_ID`,`Emp_Name`,`Date`,`In_Time`,`Out_Time`,`Duration`) VALUES (NULL,$id,'$name','207-10-31','$time', '21:00:00',$dur)";
                     if($mysqli->query($insertQuery)===TRUE)
                     {
                       //echo "inserted <br/>";
