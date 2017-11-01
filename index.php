@@ -95,7 +95,7 @@ require_once('format.php');
                   {
                     //echo $name.$date."<br/>";
                     $dur=duration($time,'21:00');
-                    $insertQuery="INSERT INTO `attendaance_sheet`(`Id`,`Emp_ID`,`Emp_Name`,`Date`,`In_Time`,`Out_Time`,`Duration`) VALUES (NULL,$id,'$name','$dt','$time', '21:00:00',$dur)";
+                    $insertQuery="INSERT INTO `attendaance_sheet`(`Id`,`Emp_ID`,`Emp_Name`,`Date`,`In_Time`,`Out_Time`,`Duration`) VALUES (NULL,$id,'$name','2017-11-1','$time', '21:00:00',$dur)";
                     if($mysqli->query($insertQuery)===TRUE)
                     {
                       //echo "inserted <br/>";
@@ -178,8 +178,15 @@ require_once('format.php');
         </div>
       </div>
       <div class="row">
-        <div class="col s5 push-s4">
-          <h4 class="text-left">This is an Attendance Management Portal.The portal helps to download In/Out report of the Employees.Upload a <span class="red lighten-2">CSV</span> file and get the report of the employees.</h4>
+        <div class="col s7 push-s3">
+          <h4 class="text-left"><b>Input (Data Feed):</b><br/>
+                    It takes a file in <span class="red lighten-2">csv</span> format as an input. This file contains all the entry/exit timestamps, grouped by user.
+                    Please click on the File button to upload a file.
+                    <br/><br>
+                    <b>Output (Attendance Report):</b><br>
+                    It generates a report, listing each user's first most entry timestamp and last exit timestamp per day.  It also calculates, the total hours an employee was present at the work facility.
+
+                  </h4>
         </div>
       </div>
 
