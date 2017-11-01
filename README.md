@@ -1,11 +1,7 @@
 This is an Attendance-Report generating web based application.
 
-Input (Data Feed):
-It takes a file in csv format as an input. This file contains all the entry/exit timestamps, grouped by user.
+In order to access the application, clone the repository. Move the downloaded repository to htdocs folder in xampp or wamp folder. Start the apache and MySQL service and run the index.php file from browser.
 
-Output (Attendance Report):
-It generates a report, listing each user's first most entry timestamp and last exit timestamp per day.  It also calculates, the total hours an employee was present at the work facility.
-
-The project is deployed on heroku and uses ClearDB database.
-
-https://jeavio-attendance-report.herokuapp.com/
+				OR
+The application is already deployed on internet.
+URL: https://jeavio-attendance-report.herokuapp.com/
