@@ -43,7 +43,7 @@ require_once('format.php');
         //creating table for data collected from excel file
 
         //creating table of attendance_sheet
-        $attendance_table="CREATE TABLE `attendaance_sheet` ( `Id` INT NOT NULL AUTO_INCREMENT , `Emp_ID` INT NOT NULL , `Emp_Name` VARCHAR(100) NOT NULL , `Date` DATE NOT NULL , `In_Time` TIME NOT NULL , `Out_Time` TIME NOT NULL , `Duration` BIGINT NOT NULL , PRIMARY KEY (`Id`))";
+        $attendance_table="CREATE TABLE `attendaance_sheet` ( `Id` INT NOT NULL AUTO_INCREMENT , `Emp_ID` INT NOT NULL , `Emp_Name` VARCHAR(100) NOT NULL , `Date` VARCHAR(50) NOT NULL , `In_Time` TIME NOT NULL , `Out_Time` TIME NOT NULL , `Duration` BIGINT NOT NULL , PRIMARY KEY (`Id`))";
         $mysqli->query($attendance_table);
         // Regular expression /[0-9][0-9][0-9 ]?[,][A-Z a-z]+/g for matching name
 
@@ -73,7 +73,7 @@ require_once('format.php');
                   $i++;
                   $time=$q[$i];
                   //echo $date.$time."</br>";
-                  $dt=dtformat($dt);
+                  //$dt=dtformat($dt);
                   $time=timeformat($time);
                   //echo $tm;
 
@@ -95,7 +95,7 @@ require_once('format.php');
                   {
                     //echo $name.$date."<br/>";
                     $dur=duration($time,'21:00');
-                    $insertQuery="INSERT INTO `attendaance_sheet`(`Id`,`Emp_ID`,`Emp_Name`,`Date`,`In_Time`,`Out_Time`,`Duration`) VALUES (NULL,$id,'$name',$dt,'$time', '21:00:00',$dur)";
+                    $insertQuery="INSERT INTO `attendaance_sheet`(`Id`,`Emp_ID`,`Emp_Name`,`Date`,`In_Time`,`Out_Time`,`Duration`) VALUES (NULL,$id,'$name','$dt','$time', '21:00:00',$dur)";
                     if($mysqli->query($insertQuery)===TRUE)
                     {
                       //echo "inserted <br/>";
